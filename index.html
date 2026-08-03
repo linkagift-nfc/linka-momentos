@@ -7,7 +7,7 @@
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0">
+        content="width=device-width, initial-scale=1, viewport-fit=cover">
 
     <title>LINKA Momentos</title>
 
@@ -15,91 +15,552 @@
         name="description"
         content="Uma homenagem especial criada com carinho.">
 
+    <meta
+        name="theme-color"
+        content="#7a4b2a">
+
+    <meta
+        name="robots"
+        content="noindex, nofollow">
+
     <link
-    rel="stylesheet"
-    href="assets/css/style.css">
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="assets/css/style.css">
 
 </head>
 
 <body>
 
-    <main>
+    <!-- ===================================================
+         EFEITOS DECORATIVOS
+    ==================================================== -->
 
-        <section>
+    <div
+        id="camadaEfeitos"
+        class="camada-efeitos"
+        aria-hidden="true">
+    </div>
 
-            <p>
-                LINKA Momentos
+
+    <!-- ===================================================
+         TELA DE ABERTURA
+    ==================================================== -->
+
+    <div
+        id="telaAbertura"
+        class="tela-abertura">
+
+        <div class="abertura-conteudo">
+
+            <div
+                class="marca-abertura"
+                aria-label="LINKA Momentos">
+
+                <span class="marca-linka">
+                    LINKA
+                </span>
+
+                <span class="marca-momentos">
+                    Momentos
+                </span>
+
+            </div>
+
+            <div
+                class="abertura-simbolo"
+                aria-hidden="true">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+            <p id="textoAbertura">
+                Preparando uma homenagem especial...
             </p>
 
-            <h1 id="titulo">
-                Uma homenagem especial
+            <div
+                class="carregamento"
+                aria-label="Carregando">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ===================================================
+         ESTADO DE CARREGAMENTO
+    ==================================================== -->
+
+    <div
+        id="estadoCarregamento"
+        class="estado-sistema"
+        hidden>
+
+        <div class="estado-card">
+
+            <div class="spinner"></div>
+
+            <h1>
+                Carregando homenagem
             </h1>
 
-            <p id="subtitulo">
-                Este momento foi preparado com muito carinho.
+            <p>
+                Aguarde só um instante.
             </p>
 
-        </section>
+        </div>
 
-        <section>
+    </div>
 
-            <img
-                id="fotoCapa"
-                src=""
-                alt="Foto principal da homenagem"
+
+    <!-- ===================================================
+         ESTADO DE ERRO
+    ==================================================== -->
+
+    <div
+        id="estadoErro"
+        class="estado-sistema"
+        hidden>
+
+        <div class="estado-card">
+
+            <div
+                class="estado-icone"
+                aria-hidden="true">
+                ♡
+            </div>
+
+            <h1 id="tituloErro">
+                Homenagem não encontrada
+            </h1>
+
+            <p id="mensagemErro">
+                Verifique se o endereço foi digitado corretamente.
+            </p>
+
+            <button
+                id="btnTentarNovamente"
+                class="botao-principal"
+                type="button">
+
+                Tentar novamente
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ===================================================
+         PÁGINA PÚBLICA
+    ==================================================== -->
+
+    <main
+        id="paginaHomenagem"
+        class="pagina-homenagem"
+        hidden>
+
+
+        <!-- ===================================================
+             APRESENTAÇÃO
+        ==================================================== -->
+
+        <header class="hero">
+
+            <div class="hero-fundo">
+
+                <img
+                    id="fotoCapa"
+                    src=""
+                    alt="Foto principal da homenagem"
+                    hidden>
+
+                <div class="hero-sobreposicao"></div>
+
+            </div>
+
+            <div class="hero-conteudo">
+
+                <div class="marca-publica">
+
+                    <span class="marca-linka">
+                        LINKA
+                    </span>
+
+                    <span class="marca-momentos">
+                        Momentos
+                    </span>
+
+                </div>
+
+                <p
+                    id="categoriaHomenagem"
+                    class="categoria-homenagem">
+                </p>
+
+                <h1 id="titulo">
+                    Uma homenagem especial
+                </h1>
+
+                <p
+                    id="subtitulo"
+                    class="subtitulo">
+                </p>
+
+                <button
+                    id="btnIniciarExperiencia"
+                    class="botao-iniciar"
+                    type="button"
+                    hidden>
+
+                    <span
+                        class="botao-icone"
+                        aria-hidden="true">
+                        ▶
+                    </span>
+
+                    <span id="textoBotaoIniciar">
+                        Abrir homenagem
+                    </span>
+
+                </button>
+
+                <div
+                    class="indicador-rolagem"
+                    aria-hidden="true">
+
+                    <span></span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ===================================================
+             CONTEÚDO DA HOMENAGEM
+        ==================================================== -->
+
+        <div
+            id="conteudoHomenagem"
+            class="conteudo-homenagem">
+
+
+            <!-- ===================================================
+                 HOMENAGEADO E MENSAGEM
+            ==================================================== -->
+
+            <section
+                id="secaoMensagem"
+                class="secao secao-mensagem">
+
+                <div class="ornamento-titulo">
+                    <span></span>
+                    <i aria-hidden="true">♡</i>
+                    <span></span>
+                </div>
+
+                <p
+                    id="chamadaHomenageado"
+                    class="chamada-secao">
+                    Esta homenagem é para
+                </p>
+
+                <h2 id="homenageado"></h2>
+
+                <div class="mensagem-card">
+
+                    <span
+                        class="aspas aspas-inicio"
+                        aria-hidden="true">
+                        “
+                    </span>
+
+                    <p id="mensagem"></p>
+
+                    <span
+                        class="aspas aspas-final"
+                        aria-hidden="true">
+                        ”
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- ===================================================
+                 VÍDEOS
+            ==================================================== -->
+
+            <section
+                id="secaoVideos"
+                class="secao secao-videos"
                 hidden>
 
-        </section>
+                <div class="cabecalho-secao">
 
-        <section>
+                    <p
+                        id="subtituloVideos"
+                        class="chamada-secao">
+                        Aperte o play
+                    </p>
 
-            <h2 id="homenageado"></h2>
+                    <h2 id="tituloVideos">
+                        Uma mensagem em vídeo
+                    </h2>
 
-            <p id="mensagem">
-                Em breve, esta homenagem estará disponível.
+                    <p
+                        id="descricaoVideos"
+                        class="descricao-secao">
+                    </p>
+
+                </div>
+
+                <div
+                    id="listaVideos"
+                    class="lista-videos">
+                </div>
+
+            </section>
+
+
+            <!-- ===================================================
+                 GALERIA DE FOTOS
+            ==================================================== -->
+
+            <section
+                id="secaoGaleria"
+                class="secao secao-galeria"
+                hidden>
+
+                <div class="cabecalho-secao">
+
+                    <p
+                        id="subtituloGaleria"
+                        class="chamada-secao">
+                        Memórias especiais
+                    </p>
+
+                    <h2 id="tituloGaleria">
+                        Nossos momentos
+                    </h2>
+
+                    <p
+                        id="descricaoGaleria"
+                        class="descricao-secao">
+                    </p>
+
+                </div>
+
+                <div
+                    id="galeria"
+                    class="galeria">
+                </div>
+
+            </section>
+
+
+            <!-- ===================================================
+                 ASSINATURA
+            ==================================================== -->
+
+            <section
+                id="secaoAssinatura"
+                class="secao secao-assinatura">
+
+                <div
+                    class="assinatura-simbolo"
+                    aria-hidden="true">
+                    ♡
+                </div>
+
+                <p id="assinatura"></p>
+
+            </section>
+
+
+            <!-- ===================================================
+                 COMPARTILHAMENTO
+            ==================================================== -->
+
+            <section
+                id="secaoCompartilhar"
+                class="secao secao-compartilhar">
+
+                <p>
+                    Guarde e compartilhe esta lembrança
+                </p>
+
+                <button
+                    id="btnCompartilhar"
+                    class="botao-secundario"
+                    type="button">
+
+                    <span aria-hidden="true">
+                        ↗
+                    </span>
+
+                    Compartilhar homenagem
+
+                </button>
+
+            </section>
+
+        </div>
+
+
+        <!-- ===================================================
+             RODAPÉ
+        ==================================================== -->
+
+        <footer class="rodape">
+
+            <div class="marca-rodape">
+
+                <span class="marca-linka">
+                    LINKA
+                </span>
+
+                <span class="marca-momentos">
+                    Momentos
+                </span>
+
+            </div>
+
+            <p>
+                Transformando sentimentos em lembranças digitais.
             </p>
-
-        </section>
-
-        <section id="secaoVideo" hidden>
-
-            <h2>
-                Vídeo especial
-            </h2>
-
-            <video
-                id="videoHomenagem"
-                controls
-                playsinline
-                preload="metadata">
-
-                Seu navegador não suporta reprodução de vídeo.
-
-            </video>
-
-        </section>
-
-        <section id="secaoGaleria" hidden>
-
-            <h2>
-                Nossos momentos
-            </h2>
-
-            <div id="galeria"></div>
-
-        </section>
-
-        <footer>
-
-            <p id="assinatura"></p>
-
-            <small>
-                Uma experiência LINKA Momentos
-            </small>
 
         </footer>
 
     </main>
+
+
+    <!-- ===================================================
+         VISUALIZAÇÃO AMPLIADA DAS FOTOS
+    ==================================================== -->
+
+    <div
+        id="visualizadorFotos"
+        class="visualizador-fotos"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Visualização da fotografia"
+        hidden>
+
+        <button
+            id="btnFecharFoto"
+            class="visualizador-fechar"
+            type="button"
+            aria-label="Fechar fotografia">
+
+            ×
+
+        </button>
+
+        <button
+            id="btnFotoAnterior"
+            class="visualizador-navegacao visualizador-anterior"
+            type="button"
+            aria-label="Fotografia anterior">
+
+            ‹
+
+        </button>
+
+        <figure>
+
+            <img
+                id="fotoAmpliada"
+                src=""
+                alt="Fotografia ampliada">
+
+            <figcaption id="legendaFoto"></figcaption>
+
+        </figure>
+
+        <button
+            id="btnProximaFoto"
+            class="visualizador-navegacao visualizador-proxima"
+            type="button"
+            aria-label="Próxima fotografia">
+
+            ›
+
+        </button>
+
+    </div>
+
+
+    <!-- ===================================================
+         CONTROLE DE MÚSICA
+    ==================================================== -->
+
+    <button
+        id="btnMusica"
+        class="controle-musica"
+        type="button"
+        aria-label="Ativar música"
+        aria-pressed="false"
+        hidden>
+
+        <span
+            id="iconeMusica"
+            aria-hidden="true">
+            ♪
+        </span>
+
+    </button>
+
+    <audio
+        id="audioHomenagem"
+        preload="metadata"
+        loop>
+    </audio>
+
+
+    <!-- ===================================================
+         AVISO FLUTUANTE
+    ==================================================== -->
+
+    <div
+        id="aviso"
+        class="aviso"
+        role="status"
+        aria-live="polite"
+        hidden>
+    </div>
+
+
+    <!-- ===================================================
+         JAVASCRIPT
+    ==================================================== -->
+
+    <script src="assets/js/app.js"></script>
 
 </body>
 
