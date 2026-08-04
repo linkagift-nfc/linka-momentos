@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <title>Área do Cliente | LINKA Momentos</title>
+
+    <meta
+        name="description"
+        content="Acesse sua conta para criar e editar suas homenagens digitais.">
+
+    <meta
+        name="theme-color"
+        content="#7a4b2a">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="../assets/css/admin.css">
+
+</head>
+
+<body>
+
+    <main class="pagina-login">
+
+        <section class="painel-apresentacao">
+
+            <div class="marca">
+
+                <span class="marca-linka">
+                    LINKA
+                </span>
+
+                <span class="marca-momentos">
+                    Momentos
+                </span>
+
+            </div>
+
+            <div class="apresentacao-conteudo">
+
+                <p class="apresentacao-etiqueta">
+                    Homenagens digitais
+                </p>
+
+                <h1>
+                    Transforme sentimentos em lembranças especiais.
+                </h1>
+
+                <p>
+                    Crie, personalize e atualize suas homenagens com fotos,
+                    vídeos, mensagens e música.
+                </p>
+
+            </div>
+
+            <div
+                class="decoracao decoracao-um"
+                aria-hidden="true">
+            </div>
+
+            <div
+                class="decoracao decoracao-dois"
+                aria-hidden="true">
+            </div>
+
+        </section>
+
+
+        <section class="painel-login">
+
+            <div class="login-conteudo">
+
+                <div class="login-cabecalho">
+
+                    <p class="login-etiqueta">
+                        Área do cliente
+                    </p>
+
+                    <h2>
+                        Entre na sua conta
+                    </h2>
+
+                    <p>
+                        Use o e-mail e a senha cadastrados na ativação da sua
+                        homenagem.
+                    </p>
+
+                </div>
+
+
+                <form
+                    id="formLogin"
+                    class="formulario"
+                    novalidate>
+
+                    <div class="campo">
+
+                        <label for="email">
+                            E-mail
+                        </label>
+
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            inputmode="email"
+                            autocomplete="email"
+                            placeholder="seuemail@exemplo.com"
+                            required>
+
+                        <small
+                            id="erroEmail"
+                            class="mensagem-campo"
+                            hidden>
+                        </small>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <div class="campo-cabecalho">
+
+                            <label for="senha">
+                                Senha
+                            </label>
+
+                            <button
+                                id="btnEsqueciSenha"
+                                class="botao-link"
+                                type="button">
+
+                                Esqueci minha senha
+
+                            </button>
+
+                        </div>
+
+                        <div class="campo-senha">
+
+                            <input
+                                id="senha"
+                                name="senha"
+                                type="password"
+                                autocomplete="current-password"
+                                placeholder="Digite sua senha"
+                                required>
+
+                            <button
+                                id="btnMostrarSenha"
+                                class="botao-mostrar-senha"
+                                type="button"
+                                aria-label="Mostrar senha"
+                                aria-pressed="false">
+
+                                <span id="iconeSenha">
+                                    Mostrar
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                        <small
+                            id="erroSenha"
+                            class="mensagem-campo"
+                            hidden>
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        id="btnEntrar"
+                        class="botao-principal"
+                        type="submit">
+
+                        <span id="textoBtnEntrar">
+                            Entrar
+                        </span>
+
+                        <span
+                            id="carregamentoBtnEntrar"
+                            class="carregamento-botao"
+                            hidden>
+                        </span>
+
+                    </button>
+
+
+                    <div
+                        id="mensagemLogin"
+                        class="mensagem-login"
+                        role="alert"
+                        hidden>
+                    </div>
+
+                </form>
+
+
+                <div class="divisor">
+
+                    <span></span>
+
+                    <p>
+                        Primeira utilização
+                    </p>
+
+                    <span></span>
+
+                </div>
+
+
+                <a
+                    class="botao-secundario"
+                    href="ativar.html">
+
+                    Ativar minha homenagem
+
+                </a>
+
+
+                <p class="ajuda">
+
+                    Está com dificuldade para acessar?
+
+                    <button
+                        id="btnAjuda"
+                        class="botao-link"
+                        type="button">
+
+                        Ver orientações
+
+                    </button>
+
+                </p>
+
+            </div>
+
+
+            <footer class="rodape-login">
+
+                <p>
+                    Uma experiência
+                    <strong>LINKA Momentos</strong>
+                </p>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <div
+        id="modalAjuda"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloModalAjuda"
+        hidden>
+
+        <div class="modal-conteudo">
+
+            <button
+                id="btnFecharAjuda"
+                class="modal-fechar"
+                type="button"
+                aria-label="Fechar">
+
+                ×
+
+            </button>
+
+            <h2 id="tituloModalAjuda">
+                Como acessar
+            </h2>
+
+            <p>
+                Primeiro, ative sua homenagem usando o código recebido junto
+                com a tag NFC.
+            </p>
+
+            <p>
+                Durante a ativação, você cadastrará o e-mail e a senha usados
+                para acessar esta área.
+            </p>
+
+            <a
+                class="botao-principal"
+                href="ativar.html">
+
+                Ir para ativação
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <script src="../assets/js/admin.js"></script>
+
+</body>
+
+</html>
