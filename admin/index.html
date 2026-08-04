@@ -9,11 +9,11 @@
         name="viewport"
         content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-    <title>Área do Cliente | LINKA Momentos</title>
+    <title>Painel | LINKA Momentos</title>
 
     <meta
         name="description"
-        content="Acesse sua conta para criar e editar suas homenagens digitais.">
+        content="Crie e gerencie suas homenagens digitais LINKA Momentos.">
 
     <meta
         name="theme-color"
@@ -33,6 +33,10 @@
         rel="stylesheet">
 
     <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+
+    <link
         rel="stylesheet"
         href="../assets/css/admin.css">
 
@@ -40,7 +44,14 @@
 
 <body>
 
-    <main class="pagina-login">
+
+    <!-- ===================================================
+         TELA DE LOGIN
+    ==================================================== -->
+
+    <main
+        id="telaLogin"
+        class="pagina-login">
 
         <section class="painel-apresentacao">
 
@@ -67,8 +78,8 @@
                 </h1>
 
                 <p>
-                    Crie, personalize e atualize suas homenagens com fotos,
-                    vídeos, mensagens e música.
+                    Crie homenagens com fotos, vídeos, mensagens e música
+                    para qualquer ocasião.
                 </p>
 
             </div>
@@ -101,8 +112,7 @@
                     </h2>
 
                     <p>
-                        Use o e-mail e a senha cadastrados na ativação da sua
-                        homenagem.
+                        Use o e-mail e a senha cadastrados na ativação.
                     </p>
 
                 </div>
@@ -231,13 +241,14 @@
                 </div>
 
 
-                <a
+                <button
+                    id="btnAbrirAtivacao"
                     class="botao-secundario"
-                    href="ativar.html">
+                    type="button">
 
                     Ativar minha homenagem
 
-                </a>
+                </button>
 
 
                 <p class="ajuda">
@@ -257,20 +268,1811 @@
 
             </div>
 
-
-            <footer class="rodape-login">
-
-                <p>
-                    Uma experiência
-                    <strong>LINKA Momentos</strong>
-                </p>
-
-            </footer>
-
         </section>
 
     </main>
 
+
+    <!-- ===================================================
+         PAINEL PRINCIPAL
+    ==================================================== -->
+
+    <div
+        id="aplicacaoAdmin"
+        class="aplicacao-admin"
+        hidden>
+
+
+        <!-- ===================================================
+             MENU LATERAL
+        ==================================================== -->
+
+        <aside
+            id="menuLateral"
+            class="menu-lateral">
+
+            <div class="menu-topo">
+
+                <div class="marca marca-painel">
+
+                    <span class="marca-linka">
+                        LINKA
+                    </span>
+
+                    <span class="marca-momentos">
+                        Momentos
+                    </span>
+
+                </div>
+
+                <button
+                    id="btnFecharMenu"
+                    class="botao-icone fechar-menu"
+                    type="button"
+                    aria-label="Fechar menu">
+
+                    <i class="bi bi-x-lg"></i>
+
+                </button>
+
+            </div>
+
+
+            <nav
+                class="menu-navegacao"
+                aria-label="Navegação principal">
+
+                <button
+                    class="menu-item ativo"
+                    type="button"
+                    data-tela="dashboard">
+
+                    <i class="bi bi-grid-1x2-fill"></i>
+
+                    <span>
+                        Visão geral
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="menu-item"
+                    type="button"
+                    data-tela="homenagens">
+
+                    <i class="bi bi-heart-fill"></i>
+
+                    <span>
+                        Minhas homenagens
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="menu-item menu-item-destaque"
+                    type="button"
+                    data-tela="nova">
+
+                    <i class="bi bi-plus-circle-fill"></i>
+
+                    <span>
+                        Nova homenagem
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="menu-item"
+                    type="button"
+                    data-tela="midias">
+
+                    <i class="bi bi-images"></i>
+
+                    <span>
+                        Fotos e vídeos
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="menu-item"
+                    type="button"
+                    data-tela="temas">
+
+                    <i class="bi bi-palette-fill"></i>
+
+                    <span>
+                        Temas
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="menu-item"
+                    type="button"
+                    data-tela="conta">
+
+                    <i class="bi bi-person-circle"></i>
+
+                    <span>
+                        Minha conta
+                    </span>
+
+                </button>
+
+            </nav>
+
+
+            <div class="menu-rodape">
+
+                <button
+                    id="btnAjudaPainel"
+                    class="menu-item"
+                    type="button">
+
+                    <i class="bi bi-question-circle"></i>
+
+                    <span>
+                        Ajuda
+                    </span>
+
+                </button>
+
+
+                <button
+                    id="btnSair"
+                    class="menu-item menu-sair"
+                    type="button">
+
+                    <i class="bi bi-box-arrow-left"></i>
+
+                    <span>
+                        Sair
+                    </span>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ===================================================
+             CONTEÚDO PRINCIPAL
+        ==================================================== -->
+
+        <div class="estrutura-principal">
+
+
+            <!-- ===================================================
+                 BARRA SUPERIOR
+            ==================================================== -->
+
+            <header class="barra-superior">
+
+                <div class="barra-esquerda">
+
+                    <button
+                        id="btnAbrirMenu"
+                        class="botao-icone abrir-menu"
+                        type="button"
+                        aria-label="Abrir menu">
+
+                        <i class="bi bi-list"></i>
+
+                    </button>
+
+                    <div>
+
+                        <p class="barra-etiqueta">
+                            Área do cliente
+                        </p>
+
+                        <h1 id="tituloTela">
+                            Visão geral
+                        </h1>
+
+                    </div>
+
+                </div>
+
+
+                <div class="barra-direita">
+
+                    <button
+                        id="btnVisualizarPublica"
+                        class="botao-topo"
+                        type="button">
+
+                        <i class="bi bi-eye"></i>
+
+                        <span>
+                            Visualizar página
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        id="btnUsuario"
+                        class="usuario-topo"
+                        type="button">
+
+                        <span class="usuario-avatar">
+                            R
+                        </span>
+
+                        <span class="usuario-dados">
+
+                            <strong id="nomeUsuario">
+                                Cliente LINKA
+                            </strong>
+
+                            <small id="emailUsuario">
+                                cliente@email.com
+                            </small>
+
+                        </span>
+
+                        <i class="bi bi-chevron-down"></i>
+
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- ===================================================
+                 ÁREA DINÂMICA
+            ==================================================== -->
+
+            <main class="conteudo-admin">
+
+
+                <!-- ===================================================
+                     DASHBOARD
+                ==================================================== -->
+
+                <section
+                    id="tela-dashboard"
+                    class="tela-admin ativa">
+
+                    <div class="boas-vindas">
+
+                        <div>
+
+                            <p class="etiqueta-painel">
+                                Bem-vindo
+                            </p>
+
+                            <h2>
+                                Seus momentos especiais em um só lugar.
+                            </h2>
+
+                            <p>
+                                Crie, personalize e publique homenagens
+                                digitais para qualquer ocasião.
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="botao-principal botao-nova-homenagem"
+                            type="button"
+                            data-abrir-tela="nova">
+
+                            <i class="bi bi-plus-lg"></i>
+
+                            Criar homenagem
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="cards-resumo">
+
+                        <article class="card-resumo">
+
+                            <span class="card-resumo-icone">
+
+                                <i class="bi bi-heart-fill"></i>
+
+                            </span>
+
+                            <div>
+
+                                <p>
+                                    Homenagens
+                                </p>
+
+                                <strong id="totalHomenagens">
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="card-resumo">
+
+                            <span class="card-resumo-icone">
+
+                                <i class="bi bi-check-circle-fill"></i>
+
+                            </span>
+
+                            <div>
+
+                                <p>
+                                    Publicadas
+                                </p>
+
+                                <strong id="totalPublicadas">
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="card-resumo">
+
+                            <span class="card-resumo-icone">
+
+                                <i class="bi bi-images"></i>
+
+                            </span>
+
+                            <div>
+
+                                <p>
+                                    Arquivos enviados
+                                </p>
+
+                                <strong id="totalMidias">
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="card-resumo">
+
+                            <span class="card-resumo-icone">
+
+                                <i class="bi bi-eye-fill"></i>
+
+                            </span>
+
+                            <div>
+
+                                <p>
+                                    Visualizações
+                                </p>
+
+                                <strong id="totalVisualizacoes">
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <div class="bloco-painel">
+
+                        <div class="bloco-cabecalho">
+
+                            <div>
+
+                                <p class="etiqueta-painel">
+                                    Recentes
+                                </p>
+
+                                <h3>
+                                    Suas homenagens
+                                </h3>
+
+                            </div>
+
+                            <button
+                                class="botao-link-painel"
+                                type="button"
+                                data-abrir-tela="homenagens">
+
+                                Ver todas
+
+                                <i class="bi bi-arrow-right"></i>
+
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            id="listaRecentes"
+                            class="lista-homenagens">
+
+                            <div class="estado-vazio">
+
+                                <span>
+
+                                    <i class="bi bi-heart"></i>
+
+                                </span>
+
+                                <h4>
+                                    Nenhuma homenagem criada
+                                </h4>
+
+                                <p>
+                                    Crie sua primeira homenagem para começar.
+                                </p>
+
+                                <button
+                                    class="botao-secundario"
+                                    type="button"
+                                    data-abrir-tela="nova">
+
+                                    Criar primeira homenagem
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ===================================================
+                     MINHAS HOMENAGENS
+                ==================================================== -->
+
+                <section
+                    id="tela-homenagens"
+                    class="tela-admin"
+                    hidden>
+
+                    <div class="cabecalho-conteudo">
+
+                        <div>
+
+                            <p class="etiqueta-painel">
+                                Organização
+                            </p>
+
+                            <h2>
+                                Minhas homenagens
+                            </h2>
+
+                            <p>
+                                Visualize e edite todas as homenagens da sua conta.
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="botao-principal"
+                            type="button"
+                            data-abrir-tela="nova">
+
+                            <i class="bi bi-plus-lg"></i>
+
+                            Nova homenagem
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="barra-filtros">
+
+                        <div class="campo-busca">
+
+                            <i class="bi bi-search"></i>
+
+                            <input
+                                id="buscaHomenagens"
+                                type="search"
+                                placeholder="Buscar homenagem">
+
+                        </div>
+
+                        <select
+                            id="filtroStatus"
+                            aria-label="Filtrar por status">
+
+                            <option value="todas">
+                                Todos os status
+                            </option>
+
+                            <option value="publicada">
+                                Publicadas
+                            </option>
+
+                            <option value="rascunho">
+                                Rascunhos
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div
+                        id="listaTodasHomenagens"
+                        class="grade-homenagens">
+
+                        <div class="estado-vazio">
+
+                            <span>
+
+                                <i class="bi bi-folder2-open"></i>
+
+                            </span>
+
+                            <h4>
+                                Nenhuma homenagem encontrada
+                            </h4>
+
+                            <p>
+                                As homenagens criadas aparecerão aqui.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ===================================================
+                     NOVA HOMENAGEM
+                ==================================================== -->
+
+                <section
+                    id="tela-nova"
+                    class="tela-admin"
+                    hidden>
+
+                    <div class="cabecalho-conteudo">
+
+                        <div>
+
+                            <p class="etiqueta-painel">
+                                Nova experiência
+                            </p>
+
+                            <h2>
+                                Criar homenagem
+                            </h2>
+
+                            <p>
+                                Preencha cada etapa e acompanhe a prévia.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="editor-homenagem">
+
+
+                        <!-- FORMULÁRIO -->
+
+                        <div class="editor-formulario">
+
+                            <div class="etapas-editor">
+
+                                <button
+                                    class="etapa-editor ativa"
+                                    type="button"
+                                    data-etapa="1">
+
+                                    <span>
+                                        1
+                                    </span>
+
+                                    Ocasião
+
+                                </button>
+
+                                <button
+                                    class="etapa-editor"
+                                    type="button"
+                                    data-etapa="2">
+
+                                    <span>
+                                        2
+                                    </span>
+
+                                    Conteúdo
+
+                                </button>
+
+                                <button
+                                    class="etapa-editor"
+                                    type="button"
+                                    data-etapa="3">
+
+                                    <span>
+                                        3
+                                    </span>
+
+                                    Mídias
+
+                                </button>
+
+                                <button
+                                    class="etapa-editor"
+                                    type="button"
+                                    data-etapa="4">
+
+                                    <span>
+                                        4
+                                    </span>
+
+                                    Aparência
+
+                                </button>
+
+                                <button
+                                    class="etapa-editor"
+                                    type="button"
+                                    data-etapa="5">
+
+                                    <span>
+                                        5
+                                    </span>
+
+                                    Publicar
+
+                                </button>
+
+                            </div>
+
+
+                            <form
+                                id="formHomenagem"
+                                novalidate>
+
+
+                                <!-- ETAPA 1 -->
+
+                                <div
+                                    class="conteudo-etapa ativo"
+                                    data-conteudo-etapa="1">
+
+                                    <div class="etapa-cabecalho">
+
+                                        <p>
+                                            Etapa 1 de 5
+                                        </p>
+
+                                        <h3>
+                                            Qual é a ocasião?
+                                        </h3>
+
+                                        <span>
+                                            Escolha o tema principal da homenagem.
+                                        </span>
+
+                                    </div>
+
+
+                                    <div
+                                        id="gradeOcasioes"
+                                        class="grade-ocasioes">
+
+                                        <label class="opcao-ocasiao">
+
+                                            <input
+                                                type="radio"
+                                                name="ocasiao"
+                                                value="dia-dos-pais">
+
+                                            <span class="ocasiao-icone">
+                                                <i class="bi bi-person-heart"></i>
+                                            </span>
+
+                                            <strong>
+                                                Dia dos Pais
+                                            </strong>
+
+                                        </label>
+
+
+                                        <label class="opcao-ocasiao">
+
+                                            <input
+                                                type="radio"
+                                                name="ocasiao"
+                                                value="dia-das-maes">
+
+                                            <span class="ocasiao-icone">
+                                                <i class="bi bi-flower1"></i>
+                                            </span>
+
+                                            <strong>
+                                                Dia das Mães
+                                            </strong>
+
+                                        </label>
+
+
+                                        <label class="opcao-ocasiao">
+
+                                            <input
+                                                type="radio"
+                                                name="ocasiao"
+                                                value="aniversario">
+
+                                            <span class="ocasiao-icone">
+                                                <i class="bi bi-cake2"></i>
+                                            </span>
+
+                                            <strong>
+                                                Aniversário
+                                            </strong>
+
+                                        </label>
+
+
+                                        <label class="opcao-ocasiao">
+
+                                            <input
+                                                type="radio"
+                                                name="ocasiao"
+                                                value="namorados">
+
+                                            <span class="ocasiao-icone">
+                                                <i class="bi bi-heart"></i>
+                                            </span>
+
+                                            <strong>
+                                                Namorados
+                                            </strong>
+
+                                        </label>
+
+
+                                        <label class="opcao-ocasiao">
+
+                                            <input
+                                                type="radio"
+                                                name="ocasiao"
+                                                value="casamento">
+
+                                            <span class="ocasiao-icone">
+                                                <i class="bi bi-gem"></i>
+                                            </span>
+
+                                            <strong>
+                                                Casamento
+                                            </strong>
+
+                                        </label>
+
+
+                                        <label class="opcao-ocasiao">
+
+                                            <input
+                                                type="radio"
+                                                name="ocasiao"
+                                                value="formatura">
+
+                                            <span class="ocasiao-icone">
+                                                <i class="bi bi-mortarboard"></i>
+                                            </span>
+
+                                            <strong>
+                                                Formatura
+                                            </strong>
+
+                                        </label>
+
+
+                                        <label class="opcao-ocasiao">
+
+                                            <input
+                                                type="radio"
+                                                name="ocasiao"
+                                                value="natal">
+
+                                            <span class="ocasiao-icone">
+                                                <i class="bi bi-stars"></i>
+                                            </span>
+
+                                            <strong>
+                                                Natal
+                                            </strong>
+
+                                        </label>
+
+
+                                        <label class="opcao-ocasiao">
+
+                                            <input
+                                                type="radio"
+                                                name="ocasiao"
+                                                value="personalizado">
+
+                                            <span class="ocasiao-icone">
+                                                <i class="bi bi-magic"></i>
+                                            </span>
+
+                                            <strong>
+                                                Personalizado
+                                            </strong>
+
+                                        </label>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- ETAPA 2 -->
+
+                                <div
+                                    class="conteudo-etapa"
+                                    data-conteudo-etapa="2"
+                                    hidden>
+
+                                    <div class="etapa-cabecalho">
+
+                                        <p>
+                                            Etapa 2 de 5
+                                        </p>
+
+                                        <h3>
+                                            Conte sua história
+                                        </h3>
+
+                                        <span>
+                                            Escreva os textos que aparecerão na página.
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="form-grade">
+
+                                        <div class="campo campo-largo">
+
+                                            <label for="tituloHomenagem">
+                                                Título
+                                            </label>
+
+                                            <input
+                                                id="tituloHomenagem"
+                                                type="text"
+                                                maxlength="80"
+                                                placeholder="Ex.: Feliz Dia dos Pais">
+
+                                        </div>
+
+
+                                        <div class="campo">
+
+                                            <label for="nomeHomenageado">
+                                                Nome do homenageado
+                                            </label>
+
+                                            <input
+                                                id="nomeHomenageado"
+                                                type="text"
+                                                maxlength="60"
+                                                placeholder="Ex.: Pai">
+
+                                        </div>
+
+
+                                        <div class="campo">
+
+                                            <label for="subtituloHomenagem">
+                                                Subtítulo
+                                            </label>
+
+                                            <input
+                                                id="subtituloHomenagem"
+                                                type="text"
+                                                maxlength="140"
+                                                placeholder="Uma frase especial">
+
+                                        </div>
+
+
+                                        <div class="campo campo-largo">
+
+                                            <label for="mensagemHomenagem">
+                                                Mensagem
+                                            </label>
+
+                                            <textarea
+                                                id="mensagemHomenagem"
+                                                rows="8"
+                                                maxlength="2000"
+                                                placeholder="Escreva sua homenagem..."></textarea>
+
+                                            <small>
+                                                Até 2.000 caracteres.
+                                            </small>
+
+                                        </div>
+
+
+                                        <div class="campo campo-largo">
+
+                                            <label for="assinaturaHomenagem">
+                                                Assinatura
+                                            </label>
+
+                                            <textarea
+                                                id="assinaturaHomenagem"
+                                                rows="3"
+                                                maxlength="200"
+                                                placeholder="Com carinho, sua família"></textarea>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- ETAPA 3 -->
+
+                                <div
+                                    class="conteudo-etapa"
+                                    data-conteudo-etapa="3"
+                                    hidden>
+
+                                    <div class="etapa-cabecalho">
+
+                                        <p>
+                                            Etapa 3 de 5
+                                        </p>
+
+                                        <h3>
+                                            Adicione fotos e vídeos
+                                        </h3>
+
+                                        <span>
+                                            Os arquivos serão armazenados automaticamente.
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="blocos-upload">
+
+                                        <div class="upload-card">
+
+                                            <div class="upload-cabecalho">
+
+                                                <span>
+                                                    <i class="bi bi-image"></i>
+                                                </span>
+
+                                                <div>
+
+                                                    <h4>
+                                                        Foto de capa
+                                                    </h4>
+
+                                                    <p>
+                                                        Imagem principal da homenagem.
+                                                    </p>
+
+                                                </div>
+
+                                            </div>
+
+                                            <label class="area-upload">
+
+                                                <input
+                                                    id="inputCapa"
+                                                    type="file"
+                                                    accept="image/*"
+                                                    hidden>
+
+                                                <i class="bi bi-cloud-arrow-up"></i>
+
+                                                <strong>
+                                                    Selecionar foto de capa
+                                                </strong>
+
+                                                <small>
+                                                    JPG, PNG ou WebP
+                                                </small>
+
+                                            </label>
+
+                                            <div
+                                                id="previewCapa"
+                                                class="preview-upload"
+                                                hidden>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="upload-card">
+
+                                            <div class="upload-cabecalho">
+
+                                                <span>
+                                                    <i class="bi bi-images"></i>
+                                                </span>
+
+                                                <div>
+
+                                                    <h4>
+                                                        Galeria de fotos
+                                                    </h4>
+
+                                                    <p>
+                                                        Selecione várias lembranças.
+                                                    </p>
+
+                                                </div>
+
+                                            </div>
+
+                                            <label class="area-upload">
+
+                                                <input
+                                                    id="inputFotos"
+                                                    type="file"
+                                                    accept="image/*"
+                                                    multiple
+                                                    hidden>
+
+                                                <i class="bi bi-cloud-arrow-up"></i>
+
+                                                <strong>
+                                                    Adicionar fotos
+                                                </strong>
+
+                                                <small>
+                                                    Você poderá reorganizar depois
+                                                </small>
+
+                                            </label>
+
+                                            <div
+                                                id="previewFotos"
+                                                class="grade-preview">
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="upload-card">
+
+                                            <div class="upload-cabecalho">
+
+                                                <span>
+                                                    <i class="bi bi-camera-video"></i>
+                                                </span>
+
+                                                <div>
+
+                                                    <h4>
+                                                        Vídeos
+                                                    </h4>
+
+                                                    <p>
+                                                        Envie mensagens e recordações.
+                                                    </p>
+
+                                                </div>
+
+                                            </div>
+
+                                            <label class="area-upload">
+
+                                                <input
+                                                    id="inputVideos"
+                                                    type="file"
+                                                    accept="video/*"
+                                                    multiple
+                                                    hidden>
+
+                                                <i class="bi bi-cloud-arrow-up"></i>
+
+                                                <strong>
+                                                    Adicionar vídeos
+                                                </strong>
+
+                                                <small>
+                                                    MP4 recomendado
+                                                </small>
+
+                                            </label>
+
+                                            <div
+                                                id="previewVideos"
+                                                class="lista-preview-videos">
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="upload-card">
+
+                                            <div class="upload-cabecalho">
+
+                                                <span>
+                                                    <i class="bi bi-music-note-beamed"></i>
+                                                </span>
+
+                                                <div>
+
+                                                    <h4>
+                                                        Música de fundo
+                                                    </h4>
+
+                                                    <p>
+                                                        Recurso opcional.
+                                                    </p>
+
+                                                </div>
+
+                                            </div>
+
+                                            <label class="area-upload">
+
+                                                <input
+                                                    id="inputMusica"
+                                                    type="file"
+                                                    accept="audio/*"
+                                                    hidden>
+
+                                                <i class="bi bi-cloud-arrow-up"></i>
+
+                                                <strong>
+                                                    Selecionar música
+                                                </strong>
+
+                                                <small>
+                                                    MP3 recomendado
+                                                </small>
+
+                                            </label>
+
+                                            <div
+                                                id="previewMusica"
+                                                class="preview-audio"
+                                                hidden>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- ETAPA 4 -->
+
+                                <div
+                                    class="conteudo-etapa"
+                                    data-conteudo-etapa="4"
+                                    hidden>
+
+                                    <div class="etapa-cabecalho">
+
+                                        <p>
+                                            Etapa 4 de 5
+                                        </p>
+
+                                        <h3>
+                                            Escolha a aparência
+                                        </h3>
+
+                                        <span>
+                                            Personalize as cores e os efeitos.
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="form-grade">
+
+                                        <div class="campo">
+
+                                            <label for="corPrincipal">
+                                                Cor principal
+                                            </label>
+
+                                            <input
+                                                id="corPrincipal"
+                                                type="color"
+                                                value="#7a4b2a">
+
+                                        </div>
+
+
+                                        <div class="campo">
+
+                                            <label for="corSecundaria">
+                                                Cor secundária
+                                            </label>
+
+                                            <input
+                                                id="corSecundaria"
+                                                type="color"
+                                                value="#d6a86a">
+
+                                        </div>
+
+
+                                        <div class="campo campo-largo">
+
+                                            <label for="efeitoVisual">
+                                                Efeito visual
+                                            </label>
+
+                                            <select id="efeitoVisual">
+
+                                                <option value="nenhum">
+                                                    Sem efeito
+                                                </option>
+
+                                                <option value="coracoes">
+                                                    Corações
+                                                </option>
+
+                                                <option value="petalas">
+                                                    Pétalas
+                                                </option>
+
+                                                <option value="estrelas">
+                                                    Estrelas
+                                                </option>
+
+                                                <option value="confetes">
+                                                    Confetes
+                                                </option>
+
+                                                <option value="neve">
+                                                    Flocos de neve
+                                                </option>
+
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- ETAPA 5 -->
+
+                                <div
+                                    class="conteudo-etapa"
+                                    data-conteudo-etapa="5"
+                                    hidden>
+
+                                    <div class="etapa-cabecalho">
+
+                                        <p>
+                                            Etapa 5 de 5
+                                        </p>
+
+                                        <h3>
+                                            Tudo pronto para publicar
+                                        </h3>
+
+                                        <span>
+                                            Revise os dados antes de finalizar.
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="resumo-publicacao">
+
+                                        <span class="resumo-icone">
+
+                                            <i class="bi bi-check2-circle"></i>
+
+                                        </span>
+
+                                        <h4>
+                                            Sua homenagem está quase pronta
+                                        </h4>
+
+                                        <p>
+                                            Ao publicar, ela ficará disponível no
+                                            link gravado na tag NFC.
+                                        </p>
+
+                                        <label class="opcao-confirmacao">
+
+                                            <input
+                                                id="confirmarPublicacao"
+                                                type="checkbox">
+
+                                            <span>
+                                                Revisei as informações e desejo publicar.
+                                            </span>
+
+                                        </label>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- NAVEGAÇÃO -->
+
+                                <div class="navegacao-etapas">
+
+                                    <button
+                                        id="btnEtapaAnterior"
+                                        class="botao-secundario"
+                                        type="button"
+                                        hidden>
+
+                                        <i class="bi bi-arrow-left"></i>
+
+                                        Voltar
+
+                                    </button>
+
+
+                                    <button
+                                        id="btnProximaEtapa"
+                                        class="botao-principal"
+                                        type="button">
+
+                                        Continuar
+
+                                        <i class="bi bi-arrow-right"></i>
+
+                                    </button>
+
+
+                                    <button
+                                        id="btnPublicarHomenagem"
+                                        class="botao-principal"
+                                        type="submit"
+                                        hidden>
+
+                                        <i class="bi bi-send-check"></i>
+
+                                        Publicar homenagem
+
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+
+                        <!-- PRÉVIA -->
+
+                        <aside class="editor-preview">
+
+                            <div class="preview-cabecalho">
+
+                                <div>
+
+                                    <p>
+                                        Pré-visualização
+                                    </p>
+
+                                    <span>
+                                        Atualização em tempo real
+                                    </span>
+
+                                </div>
+
+                                <button
+                                    id="btnExpandirPreview"
+                                    class="botao-icone"
+                                    type="button"
+                                    aria-label="Expandir pré-visualização">
+
+                                    <i class="bi bi-arrows-fullscreen"></i>
+
+                                </button>
+
+                            </div>
+
+
+                            <div class="celular-preview">
+
+                                <div class="celular-camera"></div>
+
+                                <iframe
+                                    id="iframePreview"
+                                    title="Pré-visualização da homenagem"
+                                    src="../index.html">
+                                </iframe>
+
+                            </div>
+
+                        </aside>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ===================================================
+                     MÍDIAS
+                ==================================================== -->
+
+                <section
+                    id="tela-midias"
+                    class="tela-admin"
+                    hidden>
+
+                    <div class="cabecalho-conteudo">
+
+                        <div>
+
+                            <p class="etiqueta-painel">
+                                Biblioteca
+                            </p>
+
+                            <h2>
+                                Fotos e vídeos
+                            </h2>
+
+                            <p>
+                                Gerencie todos os arquivos enviados.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="estado-vazio">
+
+                        <span>
+
+                            <i class="bi bi-cloud-arrow-up"></i>
+
+                        </span>
+
+                        <h4>
+                            Nenhum arquivo enviado
+                        </h4>
+
+                        <p>
+                            As fotos, vídeos e músicas aparecerão aqui.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ===================================================
+                     TEMAS
+                ==================================================== -->
+
+                <section
+                    id="tela-temas"
+                    class="tela-admin"
+                    hidden>
+
+                    <div class="cabecalho-conteudo">
+
+                        <div>
+
+                            <p class="etiqueta-painel">
+                                Personalização
+                            </p>
+
+                            <h2>
+                                Temas
+                            </h2>
+
+                            <p>
+                                Escolha estilos prontos para suas homenagens.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="grade-temas">
+
+                        <article class="card-tema">
+
+                            <div class="tema-amostra tema-pais"></div>
+
+                            <div>
+
+                                <h3>
+                                    Dia dos Pais
+                                </h3>
+
+                                <p>
+                                    Elegante e acolhedor.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="card-tema">
+
+                            <div class="tema-amostra tema-maes"></div>
+
+                            <div>
+
+                                <h3>
+                                    Dia das Mães
+                                </h3>
+
+                                <p>
+                                    Delicado e floral.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="card-tema">
+
+                            <div class="tema-amostra tema-amor"></div>
+
+                            <div>
+
+                                <h3>
+                                    Amor
+                                </h3>
+
+                                <p>
+                                    Romântico e marcante.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="card-tema">
+
+                            <div class="tema-amostra tema-festa"></div>
+
+                            <div>
+
+                                <h3>
+                                    Celebração
+                                </h3>
+
+                                <p>
+                                    Alegre e colorido.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ===================================================
+                     MINHA CONTA
+                ==================================================== -->
+
+                <section
+                    id="tela-conta"
+                    class="tela-admin"
+                    hidden>
+
+                    <div class="cabecalho-conteudo">
+
+                        <div>
+
+                            <p class="etiqueta-painel">
+                                Perfil
+                            </p>
+
+                            <h2>
+                                Minha conta
+                            </h2>
+
+                            <p>
+                                Atualize seus dados de acesso.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <form
+                        id="formConta"
+                        class="bloco-painel formulario-conta">
+
+                        <div class="form-grade">
+
+                            <div class="campo">
+
+                                <label for="nomeConta">
+                                    Nome
+                                </label>
+
+                                <input
+                                    id="nomeConta"
+                                    type="text"
+                                    placeholder="Seu nome">
+
+                            </div>
+
+
+                            <div class="campo">
+
+                                <label for="emailConta">
+                                    E-mail
+                                </label>
+
+                                <input
+                                    id="emailConta"
+                                    type="email"
+                                    placeholder="seuemail@exemplo.com">
+
+                            </div>
+
+
+                            <div class="campo">
+
+                                <label for="novaSenhaConta">
+                                    Nova senha
+                                </label>
+
+                                <input
+                                    id="novaSenhaConta"
+                                    type="password"
+                                    placeholder="Deixe vazio para não alterar">
+
+                            </div>
+
+
+                            <div class="campo">
+
+                                <label for="confirmarSenhaConta">
+                                    Confirmar nova senha
+                                </label>
+
+                                <input
+                                    id="confirmarSenhaConta"
+                                    type="password"
+                                    placeholder="Repita a nova senha">
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="botao-principal botao-salvar-conta"
+                            type="submit">
+
+                            Salvar alterações
+
+                        </button>
+
+                    </form>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+
+    <!-- ===================================================
+         MODAL DE ATIVAÇÃO
+    ==================================================== -->
+
+    <div
+        id="modalAtivacao"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloModalAtivacao"
+        hidden>
+
+        <div class="modal-conteudo">
+
+            <button
+                id="btnFecharAtivacao"
+                class="modal-fechar"
+                type="button"
+                aria-label="Fechar">
+
+                ×
+
+            </button>
+
+            <p class="login-etiqueta">
+                Primeira utilização
+            </p>
+
+            <h2 id="tituloModalAtivacao">
+                Ativar homenagem
+            </h2>
+
+            <p>
+                Digite o código recebido junto com sua tag NFC.
+            </p>
+
+            <form
+                id="formAtivacao"
+                class="formulario">
+
+                <div class="campo">
+
+                    <label for="codigoAtivacao">
+                        Código de ativação
+                    </label>
+
+                    <input
+                        id="codigoAtivacao"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="Ex.: LKM-8F3A2X"
+                        maxlength="20"
+                        required>
+
+                </div>
+
+                <button
+                    class="botao-principal"
+                    type="submit">
+
+                    Continuar ativação
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ===================================================
+         MODAL DE AJUDA
+    ==================================================== -->
 
     <div
         id="modalAjuda"
@@ -297,25 +2099,50 @@
             </h2>
 
             <p>
-                Primeiro, ative sua homenagem usando o código recebido junto
-                com a tag NFC.
+                Primeiro, ative sua homenagem usando o código recebido
+                junto com a tag NFC.
             </p>
 
             <p>
-                Durante a ativação, você cadastrará o e-mail e a senha usados
-                para acessar esta área.
+                Durante a ativação, você cadastrará o e-mail e a senha
+                utilizados para entrar no painel.
             </p>
 
-            <a
+            <button
+                id="btnAtivarPelaAjuda"
                 class="botao-principal"
-                href="ativar.html">
+                type="button">
 
-                Ir para ativação
+                Ativar homenagem
 
-            </a>
+            </button>
 
         </div>
 
+    </div>
+
+
+    <!-- ===================================================
+         FUNDO DO MENU MOBILE
+    ==================================================== -->
+
+    <div
+        id="fundoMenu"
+        class="fundo-menu"
+        hidden>
+    </div>
+
+
+    <!-- ===================================================
+         AVISO
+    ==================================================== -->
+
+    <div
+        id="avisoAdmin"
+        class="aviso-admin"
+        role="status"
+        aria-live="polite"
+        hidden>
     </div>
 
 
